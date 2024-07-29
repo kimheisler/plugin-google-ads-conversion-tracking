@@ -1,5 +1,5 @@
-<script type="text/plain" data-cookie-consent="{{ config('GoogleAnalytics.consentGroup') }}.googleAnalytics" async src="https://www.googletagmanager.com/gtag/js?id={{ config("GoogleAnalytics.trackingId") }}"></script>
-<script type="text/plain" data-cookie-consent="{{ config('GoogleAnalytics.consentGroup') }}.googleAnalytics">
+<script type="text/plain" data-cookie-consent="{{ config('GoogleAdsConversionTracking.consentGroup') }}.GoogleAdsConversionTracking" async src="https://www.googletagmanager.com/gtag/js?id={{ config("GoogleAdsConversionTracking.trackingId") }}"></script>
+<script type="text/plain" data-cookie-consent="{{ config('GoogleAdsConversionTracking.consentGroup') }}.GoogleAdsConversionTracking">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
 
@@ -10,12 +10,13 @@
       'analytics_storage': 'granted'
     });
 
+    {% set anonymizeIP = config("GoogleAdsConversionTracking.anonymizeIPs") == "true" %}
+    {% if anonymizeIP  %}
+        gtag('set', 'allow_ad_personalization_signals', false);
+    {% endif %}
+
     gtag('js', new Date());
 
-    gtag('config', '{{ config("GoogleAnalytics.trackingId") }}');
-
-    {% set anonymizeIP = config("GoogleAnalytics.anonymizeIPs") == "true" %}
-    {% if anonymizeIP  %}
-        gtag('set', 'anonymizeIp', true);
-    {% endif %}
+    gtag('config', '{{ config("GoogleAdsConversionTracking.trackingId") }}');
+    
 </script>
