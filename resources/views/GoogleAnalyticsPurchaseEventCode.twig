@@ -1,7 +1,7 @@
-<script type="text/plain" data-cookie-consent="{{ config('GoogleAnalytics.consentGroup') }}.googleAnalytics">
+<script type="text/plain" data-cookie-consent="{{ config('GoogleAdsConversionTracking.consentGroup') }}.GoogleAdsConversionTracking">
     {% set shippingCosts = 0 %}
     {% set webstoreConfig = services.webstoreConfig.getWebstoreConfig() %}
-    {% set useGross = config("GoogleAnalytics.submitGrossPrices") == "true" %}
+    {% set useGross = config("GoogleAdsConversionTracking.submitGrossPrices") == "true" %}
 
     {% if trackOrder %}
         {% set data = services.customer.getLatestOrder() %}
@@ -23,7 +23,8 @@
                   'ad_personalization': 'granted',
                   'analytics_storage': 'granted'
                 });
-                gtag("event", "purchase", {
+                gtag("event", "conversion", {
+                    send_to: "",
                     transaction_id: "{{ data.order.id }}",
                     value: "{% if useGross %}{{ data.order.amounts[0].grossTotal }}{% else %}{{ data.order.amounts[0].netTotal }}{% endif %}",
                     tax: "{{ data.order.amounts[0].vatTotal }}",
