@@ -1,39 +1,39 @@
 {
-    "name"              : "GoogleAnalytics",
-    "namespace"         : "GoogleAnalytics",
+    "name"              : "GoogleAdsConversionTracking",
+    "namespace"         : "GoogleAdsConversionTracking",
     "type"              : "template",
-    "version"           : "2.1.0",
+    "version"           : "1.0",
     "license"           : "AGPL-3.0",
     "price"             : 0.00,
-    "description"       : "Provides Google Analytics tracking for plentymarkets webshops",
-    "shortDescription"  : {"de": "Google Analytics Tracking für plentymarkets Webshops","en": "Provides Google Analytics tracking for plentymarkets webshops"},
+    "description"       : "Provides Google Ads Conversion Tracking for plentymarkets webshops",
+    "shortDescription"  : {"de": "Google Ads Conversion Tracking für plentymarkets Webshops","en": "Provides Google Ads Conversion Tracking for plentymarkets webshops"},
     "categories"        : ["3527"],
-    "author"            : "plentysystems AG",
+    "author"            : "Kim Heisler",
     "authorIcon"        : "icon_author_xs.png",
     "pluginIcon"        : "icon_plugin_xs.png",
-    "email"             : "sales@plentysystems.com",
-    "phone"             : "+49 561 98 681 100",
-    "keywords"          : ["plentymarkets", "plugins", "layout", "template", "google", "analytics", "tracking"],
+    "email"             : "pp@kim-heisler.de",
+    "phone"             : "+49",
+    "keywords"          : ["plentymarkets", "plugins", "layout", "conversion", "google", "ads", "tracking"],
     "require": {
         "IO": ">=5.0.0"
     },
     "platform": {
         "php": ">=7.3 <8.1"
     },
-    "serviceProvider"   : "GoogleAnalytics\\Providers\\GoogleAnalyticsServiceProvider",
+    "serviceProvider"   : "GoogleAdsConversionTracking\\Providers\\GoogleAdsConversionTrackingServiceProvider",
     "javaScriptFiles"   : [],
     "containers"        : [],
     "dataProviders": [
         {
-            "key"           :"GoogleAnalytics\\Providers\\TrackingCodeProvider",
-            "name"          :"Google Analytics tracking code",
-            "description"   :"Include Google Analytics tracking code snippet",
+            "key"           :"GoogleAdsConversionTracking\\Providers\\TrackingCodeProvider",
+            "name"          :"Google Ads Conversion tracking code",
+            "description"   :"Include Google Ads Conversion tracking code snippet",
             "defaultLayoutContainer": "Ceres::Template.Style"
         },
         {
-            "key"           : "GoogleAnalytics\\Providers\\PurchaseEventCodeProvider",
-            "name"          : "Google Analytics purchase event code",
-            "description"   : "Include Google Analytics tracking code for purchase event",
+            "key"           : "GoogleAdsConversionTracking\\Providers\\PurchaseEventCodeProvider",
+            "name"          : "Google Ads Conversion purchase event code",
+            "description"   : "Include Google Ads Conversion tracking code for purchase event",
             "defaultLayoutContainer": "Ceres::Script.Loader"
         }
     ],
