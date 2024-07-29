@@ -24,25 +24,10 @@
                   'analytics_storage': 'granted'
                 });
                 gtag("event", "conversion", {
-                    send_to: "",
+                    send_to: "{{ config("GoogleAdsConversionTracking.trackingId") }}/{{ config("GoogleAdsConversionTracking.trackingLabel") }}",
                     transaction_id: "{{ data.order.id }}",
                     value: "{% if useGross %}{{ data.order.amounts[0].grossTotal }}{% else %}{{ data.order.amounts[0].netTotal }}{% endif %}",
-                    tax: "{{ data.order.amounts[0].vatTotal }}",
-                    shipping: "{{ shippingCosts }}",
-                    currency: "{{ data.order.amounts[0].currency }}",
-                    items: [
-                        {% for item in data.order.orderItems %}
-                            {% if item.typeId == 1 %}
-                            {
-                                item_id: "{{ item.variation.number }}",
-                                item_name: "{{ item.orderItemName }}",
-                                affiliation: "{{ webstoreConfig.name }}",
-                                price: "{% if useGross %}{{ item.amounts[0].priceGross }}{% else %}{{ item.amounts[0].priceNet }}{% endif %}",
-                                quantity: "{{ item.quantity }}"
-                            },
-                            {% endif %}
-                        {% endfor %}
-                    ]
+                    currency: "{{ data.order.amounts[0].currency }}"
                 });
         {% endif %}
     {% endif %}
