@@ -1,6 +1,6 @@
 <?php // strict
 
-namespace GoogleAnalytics\Providers;
+namespace GoogleAdsConversionTracking\Providers;
 
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 use Plenty\Modules\Order\Events\OrderCreated;
@@ -14,7 +14,7 @@ use Plenty\Plugin\Templates\Twig;
  * Class IOServiceProvider
  * @package IO\Providers
  */
-class GoogleAnalyticsServiceProvider extends ServiceProvider
+class GoogleAdsConversionTrackingServiceProvider extends ServiceProvider
 {
     /**
      * Register the core functions
@@ -24,20 +24,20 @@ class GoogleAnalyticsServiceProvider extends ServiceProvider
         /** @var ConsentRepositoryContract $consentRepository */
         $consentRepository = pluginApp(ConsentRepositoryContract::class);
         $consentRepository->registerConsent(
-            'googleAnalytics',
-            'GoogleAnalytics::GoogleAnalytics.consentLabel',
+            'GoogleAdsConversionTracking',
+            'GoogleAdsConversionTracking::GoogleAdsConversionTracking.consentLabel',
             function() {
                 /** @var ConfigRepository $config */
                 $config = pluginApp(ConfigRepository::class);
                 return  [
-                    'description' => 'GoogleAnalytics::GoogleAnalytics.consentDescription',
-                    'provider' => 'GoogleAnalytics::GoogleAnalytics.consentProvider',
-                    'lifespan' => 'GoogleAnalytics::GoogleAnalytics.consentLifespan',
-                    'policyUrl' => 'GoogleAnalytics::GoogleAnalytics.consentPolicyUrl',
-                    'group' => $config->get('GoogleAnalytics.consentGroup', 'tracking'),
-                    'necessary' => $config->get('GoogleAnalytics.consentNecessary') === 'true',
-                    'isOptOut' => $config->get('GoogleAnalytics.consentOptOut') === 'true',
-                    'cookieNames' => ['/^_ga/','_ga', '_gid', '_gat']
+                    'description' => 'GoogleAdsConversionTracking::GoogleAdsConversionTracking.consentDescription',
+                    'provider' => 'GoogleAdsConversionTracking::GoogleAdsConversionTracking.consentProvider',
+                    'lifespan' => 'GoogleAdsConversionTracking::GoogleAdsConversionTracking.consentLifespan',
+                    'policyUrl' => 'GoogleAdsConversionTracking::GoogleAdsConversionTracking.consentPolicyUrl',
+                    'group' => $config->get('GoogleAdsConversionTracking.consentGroup', 'tracking'),
+                    'necessary' => $config->get('GoogleAdsConversionTracking.consentNecessary') === 'true',
+                    'isOptOut' => $config->get('GoogleAdsConversionTracking.consentOptOut') === 'true',
+                    'cookieNames' => ['/^_gsas/','_eoi', '_gads', '_gcl_dc']
                 ];
             }
         );
