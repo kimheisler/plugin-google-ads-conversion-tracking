@@ -1,6 +1,6 @@
 <?php
 
-namespace GoogleAnalytics\Providers;
+namespace GoogleAdsConversionTracking\Providers;
 
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 use Plenty\Plugin\Templates\Twig;
@@ -18,7 +18,7 @@ class PurchaseEventCodeProvider
         $sessionStorage->getPlugin()->unsetKey('GA_TRACK_ORDER');
 
         return $twig->render(
-            'GoogleAnalytics::GoogleAnalyticsPurchaseEventCode',
+            'GoogleAdsConversionTracking::GoogleAdsConversionTrackingPurchaseEventCode',
             [
                 'trackOrder' => $enableTracking
             ]
