@@ -12,6 +12,14 @@
             "defaultValue": ""
           }
         },
+        "trackingLabel": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.trackingLabelLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
         "submitGrossPrices": {
           "type": "checkBox",
           "required": false,
