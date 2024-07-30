@@ -13,7 +13,7 @@
     "pluginIcon"        : "icon_plugin_xs.png",
     "email"             : "pp@kim-heisler.de",
     "phone"             : "+49",
-    "keywords"          : ["plentymarkets", "plugins", "layout", "conversion", "google", "ads", "tracking"],
+    "keywords"          : ["shopping", "werbung", "layout", "conversion", "google", "ads", "tracking"],
     "require": {
         "IO": ">=5.0.0"
     },
